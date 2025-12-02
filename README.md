@@ -117,7 +117,7 @@ EudicSync/
 Bash
 
 pip install requests spacy --target=libs --platform win_amd64 --python-version 3.13 --only-binary=:all:
-# 此外，需手动下载 en_core_web_sm 模型解压至 libs 目录
+此外，需手动下载 en_core_web_sm 模型解压至 libs 目录
 📄 版权与声明 (License & Disclaimer)
 MIT License: 本项目代码开源。
 
