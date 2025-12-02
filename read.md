@@ -70,7 +70,7 @@ Anki 版本：建议 Anki 23.10 或更高版本（最低支持 Python 3.9+ 环�
 
 登录 欧路词典开放平台。
 
-获取你的 Authorization (Token) 。请在https://my.eudic.net/登录获取。
+获取你的 Authorization (Token) 。请在https://my.eudic.net 登录获取。
 
 启动插件：
 
