@@ -54,9 +54,7 @@ c. 如果不同单词的某一例句相同，该例句只对应一张卡片。
 Anki 版本：建议 Anki 23.10 或更高版本（最低支持 Python 3.9+ 环境）。
 
 📥 安装指南 (Installation)
-方法一：通过 AnkiWeb 安装（推荐）
-
-方法二：手动安装 (GitHub)
+手动安装 (GitHub)
 在右侧 Releases 页面下载最新的 .ankiaddon 文件。
 
 双击该文件，Anki 将自动安装。
@@ -115,7 +113,6 @@ EudicSync/
 由于 Anki 环境没有预装 Spacy，你需要将依赖安装到 libs 目录：
 
 Bash
-
 pip install requests spacy --target=libs --platform win_amd64 --python-version 3.13 --only-binary=:all:
 此外，需手动下载 en_core_web_sm 模型解压至 libs 目录
 📄 版权与声明 (License & Disclaimer)
