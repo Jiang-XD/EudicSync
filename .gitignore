@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+user_files/     # 不要上传用户的配置文件
+*.ankiaddon
