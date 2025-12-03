@@ -1,60 +1,50 @@
-Eudic to Anki Sync (欧路词典生词同步助手)
-Eudic to Anki Sync 是一款强大的 Anki 插件，能够将你在 欧路词典 (Eudic) 中积累的生词、例句和详细笔记，智能转化为高质量的 Anki 拼写填空卡片 (Type-in Cloze)。
+# EudicSync (欧路词典生词本同步助手)
+## ✍️ Introduction
+> [!WARNING]
+> 目前仅支持 Windows (64位)。插件内置了 NLP 库 (Spacy/Numpy) 的二进制文件，目前仅打包了 Windows 版本。Mac/Linux 用户直接安装可能会报错。
 
-本插件专为深度英语学习者设计，通过 NLP（自然语言处理）技术自动识别句子中的单词变形，支持多例句切分与智能去重。
+**语境填空**被公认为是第二语言习得的黄金法则，其又被通俗地归类为**句子挖掘**或者**语境填空**。\
+其在应用层面的表现形式是，读者在阅读外语作品时，将生词与其所在句子截取，并将句子中的生词挖空，在后续复习中要求自己填写该生词。\
+欧路词典提供了强大的词典、生词本和我的笔记功能，而anki则提供了对应的句子挖空和卡片制作功能。
+本anki插件的作用就是将欧路词典的生词本和对应笔记同步至anki，并制作卡片。
+## ✨ Features
+### 1. 单个单词对应多个例句生成多张卡片
+  在阅读过程中，单个单词往往出现在不同句子中会对应不同释义，而用户可通过欧路词典的我的笔记将对应例句和中文释义按简单的格式对应保存后，再同步到anki后，即可生成每个例句对应的卡片。
+### 2. 单个例句中含多个生词在同一卡片中生成多个填空
+  若同一个例句出现多个生词，用户在每个生词对应的笔记下都输入该例句和不同生词对应的中文释义，则anki卡片针对该例句只生成一张卡片，卡片中生成多个填空。
+### 3. 跳过已有单词或已有例句
+  用户在anki同步某一生词本后，之后在欧路词典的生词本添加新的单词，再同步至anki，会跳过已经同步的单词（若已有单词在欧路词典笔记下添加新的例句和释义，则该例句和释义仍旧会生成新的卡片）。
+### 4. 智能挖空
+  插件会自动识别单词和例句中对应的单词变形并挖空。
+### 5. 卡片形式
+  正面：英文例句，例句中单词对应的内容被挖空。提示，中文释义，点击出现。输入框，需要用户填入挖空内容。
+  反面：挖空内容，单词原型，音标和书名号中的中文释义。
 
-✨ 核心功能 (Features)
-用户将生词保存到欧路词典生词本中，并为每一个单词添加笔记。笔记的形式是该单词所在语境的英文例句和用书名号标注的对应中文释义。
+   <img width="300" height="350" alt="image" src="https://github.com/user-attachments/assets/a2904d9f-1810-4f52-af0b-cf25074b2949" />   <img width="300" height="350" alt="image" src="https://github.com/user-attachments/assets/e074f433-ffb4-41d1-ad23-2a2670b4791a" />
 
-如针对单词account，笔记通常为：
+## 🚀 Usage
+### 1. [获取欧路词典授权](https://my.eudic.net)
+  登录后点击左栏获取授权，复制授权信息下的代码。
+### 2. 启动插件
+  在 Anki 菜单栏点击 工具 -> EudicSync。
+### 3. 配置与同步：
+  首次运行会要求输入授权信息下的代码（仅需输入一次）。\
+  牌组：选择或输入一个新的牌组名称（例如: words_NYT）。\
+  提取分组：点击按钮，插件会列出你欧路账号下的所有生词本 。\
+  勾选并同步：勾选你想同步的生词本，点击“同步”。
+### 4. 开始学习：
+  同步完成后，就可以在 Anki 中开始背诵了！
+> [!note]
+> 欧路词典中我的笔记的格式为：英文例句 《中文释义》
+> 
+> 如单词account：\
+> "What scenes of Grandeur and Beauty!" exclaimed Thomas Baldwin in his 1786 account, Airopaidia, of a balloon journey over Chester during which he created one of the earliest aerial drawings. 《描述，叙述》
+> 
+> 如含有多个例句：\
+> "What scenes of Grandeur and Beauty!" exclaimed Thomas Baldwin in his 1786 account, Airopaidia, of a balloon journey over Chester during which he created one of the earliest aerial drawings. 《描述，叙述》  The agency has lost several of its most important accounts. 《老主顾》。
 
-"What scenes of Grandeur and Beauty!" exclaimed Thomas Baldwin in his 1786 account, Airopaidia, of a balloon journey over Chester during which he created one of the earliest aerial drawings. 《描述，叙述》。
-
-若同一单词对应不同的例中组合，如单词account，笔记为： "What scenes of Grandeur and Beauty!" exclaimed Thomas Baldwin in his 1786 account, Airopaidia, of a balloon journey over Chester during which he created one of the earliest aerial drawings. 《描述，叙述》  The agency has lost several of its most important accounts. 《老主顾》。
-
-该插件将单词和笔记同步至anki后，卡片形式为：
-
-卡组为填空形式。正面为笔记中的英文例句，例句中单词对应的内容被挖空，且不含原笔记中书名号内的中文。正面还含有单词对应的书名号内的中文作为提示，提示不含有该单词。提示点击后才出现。用户需要将挖空内容正确拼写到正面的填空中。反面依次为挖空内容，单词原型，音标和书名号中的中文释义。
-
-b. 如某个单词含有多条例句，同一个单词的每一个例句应该对应不同的卡片。
-
-c. 如果不同单词的某一例句相同，该例句只对应一张卡片。
-
-用户生词本中间断地加入新的生词和之前生词的不同的例句，若有相同单词则跳过，但若是某一单词的新的例句，那该例句不被跳过，对应一张新的卡片。
-
-🔗 无缝同步：直接调用欧路词典官方 API，获取你的生词本分类、单词、音标及笔记 。
-
-
-
-🧠 智能挖空 (NLP Powered)：内置 Spacy 自然语言处理模型。
-
-即使笔记中的单词是 ended，而生词本单词是 end，也能精准识别并挖空。
-
-支持短语（如 end up）和合成词（如 bird's-eye）的完整匹配与挖空。
-
-📚 自动切分与合并：
-
-多例句支持：一条笔记包含 5 个例句？插件会自动生成 5 张不同的卡片。
-
-智能合并：如果不同单词对应了同一个例句（例如 jump 和 excitement 都在同一句话中），插件会将其合并为一张卡片，挖掉两个空，避免重复背诵。
-
-✍️ 拼写检查 (Type-in)：生成的卡片要求你手动拼写答案，强化记忆。
-
-🎨 精美排版：
-
-正面：仅显示句子挖空和书名号内的中文提示（点击查看）。
-
-背面：包含句子原句、单词、音标及完整释义，排版整洁。
-
-⚠️ 兼容性说明 (Compatibility)
-操作系统：目前仅支持 Windows (64位)。
-
-原因：插件内置了高性能 NLP 库 (Spacy/Numpy) 的二进制文件，目前仅打包了 Windows 版本。Mac/Linux 用户直接安装可能会报错。
-
-Anki 版本：建议 Anki 23.10 或更高版本（最低支持 Python 3.9+ 环境）。
-
-📥 安装指南 (Installation)
-手动安装 (GitHub)
+## 📥 Installation
+### 1. 手动安装 (GitHub)
 在右侧 Releases 页面下载最新的 .ankiaddon 文件。
 
 双击该文件，Anki 将自动安装。
@@ -63,42 +53,12 @@ Anki 版本：建议 Anki 23.10 或更高版本（最低支持 Python 3.9+ 环�
 
 重启 Anki。
 
-🚀 使用教程 (Usage)
-获取授权：
+### 2. ankiweb安装
+anki暂不允许注册时间较短账号上传插件。
 
-登录 欧路词典开放平台。
-
-获取你的 Authorization (Token) 。请在https://my.eudic.net 登录获取。
-
-启动插件：
-
-在 Anki 菜单栏点击 工具 -> 欧路词典同步。
-
-配置与同步：
-
-首次运行会要求输入 API Token（仅需输入一次）。
-
-牌组：选择或输入一个新的牌组名称（例如 English::Eudic）。
-
-提取分组：点击按钮，插件会列出你欧路账号下的所有生词本 。
-
-勾选并同步：勾选你想同步的生词本，点击“同步”。
-
-开始学习：
-
-同步完成后，就可以在 Anki 中开始背诵了！
-
-🛠️ 开发与构建 (Development)
-如果你想自行构建或为项目贡献代码：
-
-依赖环境
-Python 3.13 (与最新 Anki 保持一致)
-
-依赖库：requests, spacy, numpy
-
+## 🛠️ Development
 项目结构
-Plaintext
-
+```
 EudicSync/
 ├── libs/                # 第三方库 (Vendor)
 │   ├── spacy/
@@ -109,18 +69,22 @@ EudicSync/
 ├── anki_utils.py        # Anki 数据库交互
 ├── ui.py                # PyQt6 界面
 └── __init__.py          # 入口
+```
 本地运行注意
 由于 Anki 环境没有预装 Spacy，你需要将依赖安装到 libs 目录：
-
-Bash
+```
 pip install requests spacy --target=libs --platform win_amd64 --python-version 3.13 --only-binary=:all:
+```
 此外，需手动下载 en_core_web_sm 模型解压至 libs 目录
-📄 版权与声明 (License & Disclaimer)
+## 📄 License & Disclaimer
 MIT License: 本项目代码开源。
-
 
 API 使用：本插件使用 欧路词典 OpenAPI，用户需遵守欧路词典的相关使用协议。插件仅作为数据同步工具，不提供任何词典内容数据，所有数据均来自用户个人的生词本 。
 
 免责声明：使用本插件产生的 Anki 数据归用户所有。作者不对因使用插件导致的数据丢失负责（虽然我们做了详尽的错误捕获和测试）。
 
+AI声明：部分代码由AI生成。
+
 如果这个插件对你有帮助，欢迎点一个 ⭐ Star！
+
+
